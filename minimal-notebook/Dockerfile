@@ -1,9 +1,9 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
-FROM jupyter/base-notebook
+FROM registry.us-east-1.aliyuncs.com/myk8simages/notebookall:5.7-v1
 
-LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
+LABEL maintainer="Jupyter Project <jikun.zhang@qq.com>"
 
 USER root
 
