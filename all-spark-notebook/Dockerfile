@@ -28,6 +28,8 @@ RUN conda install --quiet --yes \
     'r-ggplot2=2.2*' \
     'r-sparklyr=0.7*' \
     'r-rcurl=1.95*' && \
+    'tensorflow=1.11*' \
+    'keras=2.2*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
