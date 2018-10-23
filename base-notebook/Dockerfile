@@ -56,9 +56,7 @@ USER $NB_UID
 RUN mkdir /home/$NB_USER/work && \
     mkdir /home/$NB_USER/temp && \
     mkdir /home/$NB_USER/input && \
-    mkdir -p /usr/share/zoneinfo/Asia/ && \
     mkdir /home/$NB_USER/readonlydata && \
-    timedatectl set-timezone 'Asia/Shanghai' && \
     fix-permissions /home/$NB_USER
 
 # Install conda as jovyan and check the md5 sum provided on the download site
