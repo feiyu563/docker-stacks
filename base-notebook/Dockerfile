@@ -29,7 +29,7 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
     SHELL=/bin/bash \
-    NB_USER=jovyan \
+    NB_USER=datafountain \
     NB_UID=1000 \
     NB_GID=100 \
     LC_ALL=en_US.UTF-8 \
@@ -54,6 +54,10 @@ USER $NB_UID
 
 # Setup work directory for backward-compatibility
 RUN mkdir /home/$NB_USER/work && \
+    mkdir /home/$NB_USER/temp && \
+    mkdir /home/$NB_USER/input && \
+    mkdir /home/$NB_USER/readonlydata && \
+    timedatectl set-timezone 'Asia/Shanghai' && \
     fix-permissions /home/$NB_USER
 
 # Install conda as jovyan and check the md5 sum provided on the download site
