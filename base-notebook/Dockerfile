@@ -56,6 +56,7 @@ USER $NB_UID
 RUN mkdir /home/$NB_USER/work && \
     mkdir /home/$NB_USER/temp && \
     mkdir /home/$NB_USER/input && \
+    mkdir -p /usr/share/zoneinfo/Asia/ && \
     mkdir /home/$NB_USER/readonlydata && \
     timedatectl set-timezone 'Asia/Shanghai' && \
     fix-permissions /home/$NB_USER
@@ -113,6 +114,7 @@ ENTRYPOINT ["tini", "-g", "--"]
 CMD ["start-notebook.sh"]
 
 # Add local files as late as possible to avoid cache busting
+COPY Shanghai /etc/localtime
 COPY start.sh /usr/local/bin/
 COPY start-notebook.sh /usr/local/bin/
 COPY start-singleuser.sh /usr/local/bin/
