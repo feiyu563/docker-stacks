@@ -53,10 +53,10 @@ RUN pip install --no-cache-dir \
     fix-permissions /home/$NB_USER
     
 #python2
-#python2 -m pip install --upgrade pip && \
-#python2 -m pip install --upgrade setuptools  && \
-    
+
 RUN python2 -m pip --no-cache-dir install ipykernel matplotlib numpy && \
+    python2 -m pip install --upgrade pip && \
+    python2 -m pip install --upgrade setuptools  && \
     python2 -m ipykernel install --user && \
     rm -rf /home/$NB_USER/.local && \
     fix-permissions $CONDA_DIR && \
