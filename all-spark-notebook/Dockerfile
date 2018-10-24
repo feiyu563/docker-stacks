@@ -51,7 +51,7 @@ RUN pip install --no-cache-dir \
 #python2
 RUN conda create -n ipykernel_py2 python=2 ipykernel && \
     source activate ipykernel_py2  && \
-    python2 -m ipykernel install --user
+    python2 -m ipykernel install --user  && \
     rm -rf /home/$NB_USER/.local && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
