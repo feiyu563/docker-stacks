@@ -23,6 +23,16 @@ RUN apt-get update && \
     gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+#python2
+
+RUN python2 -m pip install --upgrade pip && \
+    python2 -m pip install --upgrade setuptools  && \
+    python2 -m pip --no-cache-dir install ipykernel matplotlib numpy && \
+    python2 -m ipykernel install --user && \
+    rm -rf /home/$NB_USER/.local && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
 USER $NB_UID
 #tf
 RUN conda install --quiet --yes \
@@ -48,16 +58,6 @@ RUN pip install --no-cache-dir \
     https://dist.apache.org/repos/dist/dev/incubator/toree/0.3.0-incubating-rc1/toree-pip/toree-0.3.0.tar.gz \
     && \
     jupyter toree install --sys-prefix && \
-    rm -rf /home/$NB_USER/.local && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
-    
-#python2
-
-RUN python2 -m pip install --upgrade pip && \
-    python2 -m pip install --upgrade setuptools  && \
-    python2 -m pip --no-cache-dir install ipykernel matplotlib numpy && \
-    python2 -m ipykernel install --user && \
     rm -rf /home/$NB_USER/.local && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
