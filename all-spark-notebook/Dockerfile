@@ -15,6 +15,10 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     fonts-dejavu \
     tzdata \
+    python \
+    python-dev \
+    python-wheel \
+    python-pip \
     gfortran \
     gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -49,9 +53,11 @@ RUN pip install --no-cache-dir \
     fix-permissions /home/$NB_USER
     
 #python2
-RUN conda create -n ipykernel_py2 python=2 ipykernel && \
-    source activate ipykernel_py2  && \
-    python -m ipykernel install --user  && \
+#python2 -m pip install --upgrade pip && \
+#python2 -m pip install --upgrade setuptools  && \
+    
+RUN python2 -m pip --no-cache-dir install ipykernel matplotlib numpy && \
+    python2 -m ipykernel install --user && \
     rm -rf /home/$NB_USER/.local && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
