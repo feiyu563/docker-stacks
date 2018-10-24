@@ -52,6 +52,8 @@ RUN pip install --no-cache-dir \
 RUN conda install --quiet --yes 'spylon-kernel=0.4*' && \
     conda clean -tipsy && \
     python -m spylon_kernel install --sys-prefix && \
+    python2 -m pip install ipykernel && \
+    python2 -m ipykernel install --user && \
     rm -rf /home/$NB_USER/.local && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
