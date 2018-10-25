@@ -13,7 +13,9 @@ RUN apt-get update && \
     python-dev \
     python-wheel \
     python-pip && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /srv/nbgrader/exchange && \
+    chmod ugo+rw /srv/nbgrader/exchange
 
 #python2
 
@@ -35,7 +37,7 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-# Install Tensorflow
+# Install nbgrader
 RUN conda install --quiet --yes jupyter && \
     conda install --yes -c conda-forge nbgrader && \
     conda clean -tipsy && \
