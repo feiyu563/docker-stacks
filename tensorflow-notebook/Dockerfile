@@ -12,11 +12,7 @@ RUN apt-get update && \
     python \
     python-dev \
     python-wheel \
-    python-pip \
-    nodejs npm \
-    && npm install -g n \
-    && n 8.11.3 \
-    && apt-get clean && \
+    python-pip && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 #python2
@@ -35,6 +31,13 @@ USER $NB_UID
 RUN conda install --quiet --yes \
     'tensorflow=1.11*' \
     'keras=2.2*' && \
+    conda clean -tipsy && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
+# Install Tensorflow
+RUN conda install --quiet --yes jupyter && \
+    conda install --yes -c conda-forge nbgrader && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
