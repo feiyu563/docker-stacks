@@ -13,9 +13,7 @@ RUN apt-get update && \
     python-dev \
     python-wheel \
     python-pip && apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    mkdir -p /srv/nbgrader/exchange && \
-    chmod ugo+rw /srv/nbgrader/exchange
+    rm -rf /var/lib/apt/lists/*
 
 #python2
 
