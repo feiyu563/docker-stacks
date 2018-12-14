@@ -38,8 +38,8 @@ RUN conda install --quiet --yes \
     fix-permissions /home/$NB_USER
 
 # Install nbgrader
-RUN conda install --quiet --yes jupyter && \
-    conda install --yes -c conda-forge nbgrader && \
-    conda clean -tipsy && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+# RUN conda install --quiet --yes jupyter && \
+#     conda install --yes -c conda-forge nbgrader && \
+#     conda clean -tipsy && \
+#     fix-permissions $CONDA_DIR && \
+#     fix-permissions /home/$NB_USER
